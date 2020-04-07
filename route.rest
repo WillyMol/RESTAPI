@@ -1,0 +1,52 @@
+
+GET http://localhost:3000/posts
+###
+GET http://localhost:3000/posts/5e839012a2b92c293c42053f
+###
+DELETE http://localhost:3000/posts/5e872864f8165c2ee8bf69be
+###
+PATCH  http://localhost:3000/posts/5e839012a2b92c293c42053f HTTP/1.1
+content-type: application/json
+
+{
+    "State": 1
+}
+
+###
+POST http://localhost:3000/posts HTTP/1.1
+content-type: application/json
+
+{
+    "Name": "deleteme",
+    "Ip" : "http://192.168.1.32/Toggle",
+    "Description": "NodeMcu Lua ESP8266 CH340G ESP-12E. It's on protoboard.",
+    "State":true
+}
+
+###
+POST http://192.168.1.17:8080/playmp3.php?playaudio=ding.mp3
+###
+POST  http://192.168.1.32/body HTTP/1.1
+content-type: application/json
+
+{   
+    "State" : true    
+}
+###
+POST  http://192.168.1.32/Toggle
+###
+POST  http://192.168.1.32/On
+###
+POST  http://192.168.1.32/Off
+###
+POST  http://192.168.1.32
+###
+POST http://192.168.1.19:8080/pin=lon
+###
+POST http://192.168.1.19:8080/pin=lof
+###
+POST  http://192.168.1.9:8000/gpio4?toggle=true
+###
+POST http://192.168.1.9:8000/gpio4?status=true
+###
+http://192.168.1.9:8000/gpio4?status=false

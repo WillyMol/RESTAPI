@@ -86,13 +86,24 @@ click here to know about definitions: https://www.geeksforgeeks.org/routing-in-n
 13)	Create Data to Database mongoDB
 14)	Create a directory/File => models/Post.js
 15) This file create a schema 'mongoose.Schema()' to represent how the data look or properties. See file Post.js
-16)
-17)
-18)
-19)
-20)
-21)
-21)
-23)
-24)
-2
+16) GitHub:
+	…or create a new repository on the command line
+		echo "# RESTAPI" >> README.md
+		git init
+		git add README.md
+		git commit -m "first commit"
+		git remote add origin https://github.com/WillyMol/<reponame>.git
+		git push -u origin master
+					
+	…or push an existing repository from the command line
+		git remote add origin https://github.com/WillyMol/<reponame>.git
+		git push -u origin master
+
+	…or import code from another repository
+		You can initialize this repository with code from a Subversion, Mercurial, or TFS project.
+	
+	Note: fatal: remote origin already exists =>
+			It means pretty much what it says, the remote origin already exists, ie. you've already set it up before. 
+			You can type git remote -v to see what/where remotes are set. If you made a mistake before you can type git 
+			remote rm origin to clear it out and try again.
+			

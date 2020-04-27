@@ -44,7 +44,8 @@ router.patch('/:postId', getPost, async (req,res) =>{
     } else if(req.body.Description != null){
         res.post.Description = req.body.Description;
     } else if(req.body.State != null){
-        res.post.State = req.body.State;             		
+        res.post.State = req.body.State;
+        //Axios=JavaScript library use to perform HTTP requests to postId device.            		
         postReqToDev(res.post.Ip, req.body.State);         
     } else {  //404 means request not found
         return res.status(404).json({ 

@@ -1,0 +1,98 @@
+Build A Restful Api With Node.js Express & MongoDB | Rest Api Tutorial
+link: https://www.youtube.com/watch?v=vjf774RKrLc
+
+definition: Representational state transfer is a software architectural style 
+that defines a set of constraints to be used for creating Web services.
+Web services that conform to the REST architectural style, called RESTful 
+Web services, provide interoperability between computer systems on the Internet.
+click here to know about definitions: https://www.geeksforgeeks.org/routing-in-node-js/
+
+
+0)	Open Visual Studio Code, then Go to Terminal
+1)	npm init =>  generate all dependencies such packages.son
+2)	npm install express nodemon  //install express and nodemon
+3)	Go package.json  and see the installed dependencies
+4)	Go to "scripts" line and write this:
+	{"start" : "nodemon app.js"}
+	It will help you to execute and run the server everytime a change is done
+5)	Create a new file "app.js"	(see file inside RestApiNodejs folder)	
+6)	type on terminal at any time "npm start" to start the server.
+	ctrl + c => close server
+	You are running the script "app.js" set in pachage.json back on step 4. 
+7)	Create routes
+	example:
+		app.get('/posts', (req,res) => {
+			res.send('we are on post');
+		});
+	7.1)	Add routes to their own file; so You can Import them in app.js and use them
+			Create Directory and File => '..//routes/posts.js'
+	7.2)	Add the packages to this file
+			const express = require ('express');
+			const router = express.Router();
+			const Post = require('../models/Post');
+			...
+			//routes in here
+			...
+			module.exports = router; //add this line at the end of the file
+	7.3)	Go to app.js and import the routes file and add a middleware to call the rounds
+			//Import Routes:
+			const postsRoute = require('./routes/posts');
+			//This is middlewar: Everytime '/posts' is hit execute postsRoute
+			app.use('/posts',postsRoute);			
+		
+8)	Create Middlewares: Middleware functions have full access to the request and 
+	response objects and can modify either of them
+	example 1:
+		middlewares => execute function when specific routes is hit
+			app.use('/posts', () => {
+				console.log('this is middleware running');			
+			});
+	example 2:
+			app.use(auth); 	//Everytime a route is hit this Middleware will execute
+							//to authenticate the user
+		
+9)	npm install mongoose //Install mongoose => A package to control MongoDB
+10)	Add the package to app.js: const mongoose = require("mongoose")
+11)	Creating a database (MongoDB):
+	Go to https://account.mongodb.com/account/login sign up or sign in. (get a free database)
+	11.1)	Create a New Project, Pick a Cluster, pick shared cluster -
+			Cluster Tier MO Sandbox 512MB Storage(free),
+    11.2)	Pick cloud provider & Region ex: Amazon/North America.
+	11.3)	Name the Cluster and wait for cluster to be created
+	11.4)	Hit CONNECT tab, Add your current IP Address
+	11.5)	Create a MongoDB User; Username and Password
+	11.6)	Choose a Connection Method => Pick MongoDB's native drivers
+	11.7	Select driver & verion: Node.js/3.0 or later
+	11.8)	Copy Connection String Only:
+			mongodb+srv://wm:<password>@iot-cluster-1iwy8.mongodb.net/test?retryWrites=true&w=majority
+			Replace <password> with the password for the user,
+			wm, and ensure all special characters are URL encoded.
+12)	Connecting to date base (MongoDB):
+    12.1)	Firts we need to hide the password. Install the package dotenv
+			=> npm install dotenv
+	12.2)	Add this line to app.js => require('dotenv/config');
+			Allow app.js to access .env file
+	12.3)	create a file => .env //you put code here to hide info you want nobody to see
+	12.4)	add the line below to .env file:
+			DB_CONNECTION="Add the connection Stringe from step 11.8 to here"
+	12.5)	Add the lines of code to app.js:
+			//connect to DB mongoDB
+			mongoose.connect(
+				process.env.DB_CONNECTION,
+				{ useNewUrlParser: true, useUnifiedTopology: true },
+				() => console.log('connected to DB!')
+			);
+	
+13)	Create Data to Database mongoDB
+14)	Create a directory/File => models/Post.js
+15) This file create a schema 'mongoose.Schema()' to represent how the data look or properties. See file Post.js
+16)
+17)
+18)
+19)
+20)
+21)
+21)
+23)
+24)
+2

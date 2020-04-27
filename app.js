@@ -31,6 +31,7 @@ app.use('/',rootsRoute);
 });*/
 
 //connect to DB mongoDB
+// DB_CONNECTION=mongodb+srv://user:password@iot-cluster-1iwy8.mongodb.net/test?retryWrites=true&w=majority
 mongoose.connect(
     process.env.DB_CONNECTION,
     { useNewUrlParser: true, useUnifiedTopology: true },

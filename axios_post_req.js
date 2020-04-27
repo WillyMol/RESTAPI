@@ -1,4 +1,5 @@
-//this is function to send post request to a device (a Thing)
+//Axios is a very popular JavaScript library you can use to perform HTTP requests
+//this is function to send post request to a specific device (a Thing)
 const axios = require('axios').default;
 
 var postReqToDev = function (res_post_Ip,req_body_State) {     

@@ -4,6 +4,10 @@ const PostSchema = new mongoose.Schema({
         type: String,
         required: true        
     },
+    Place:{
+        type: String,
+        required: true        
+    },
     Ip:{
         type: String,
         required: true        

@@ -8,7 +8,7 @@ var postReqToDev = function (res_post_Ip,req_body_State) {
         console.log(response.data);
     })
     .catch((err) => {
-        console.log({ "message" : err.response.data });             
+        console.log({ "mensaje" : err });             
     });       
 };
 

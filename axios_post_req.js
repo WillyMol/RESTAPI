@@ -8,7 +8,11 @@ var postReqToDev = function (res_post_Ip,req_body_State) {
         console.log(response.data);
     })
     .catch((err) => {
-        console.log({ "mensaje" : err });             
+        // console.log({ "mensaje" : "err" });
+        console.log({ "mensaje" : "Device at " +  res_post_Ip + " Not responding",
+                      "File Location" : "axios_post_req.js",
+                      "Server":"restapi"                      
+                    });             
     });       
 };
 

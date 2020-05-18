@@ -5,18 +5,22 @@ GET http://localhost:5000/posts/5e839012a2b92c293c42053f
 ###
 DELETE http://localhost:5000/posts/5eb8575257d9fd1c746a4630
 ###
-PATCH  http://localhost:5000/posts/5e839012a2b92c293c42053f HTTP/1.1
+PATCH  http://localhost:5000/posts/5eb88daae0a5da20fc3cb61a HTTP/1.1
+content-type: application/json
+
+{
+    "Name": "ESP_fake2",
+    "Place": "Generic fake",
+    "Ip": "http://192.168.1.30/body",
+    "Description": "Feliz por siempre",
+    "State": false
+}
+###
+PATCH  http://localhost:5000/posts/5eb88daae0a5da20fc3cb61a HTTP/1.1
 content-type: application/json
 
 {
     "State": false
-}
-###
-PATCH  http://localhost:5000/posts/5ea6fe110524da3f2855ad5f HTTP/1.1
-content-type: application/json
-
-{
-    "State": true
 }
 
 ###

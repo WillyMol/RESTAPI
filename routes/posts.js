@@ -37,7 +37,7 @@ router.post('/', async (req,res) => {
 });
 
 // 4) Updating One. (a Thing) any attribute in mongoDB
-router.patch('/:postId', getPost, async (req,res) =>{    
+/* router.patch('/:postId', getPost, async (req,res) =>{    
     if(req.body.Name != null){
         res.post.Name = req.body.Name;
     } else if(req.body.Place != null){
@@ -62,7 +62,34 @@ router.patch('/:postId', getPost, async (req,res) =>{
     } catch (err) {
         res.status(400).json({ message : err.message });        
     }
+}); */
+
+// 4) Updating All or only the state. (a Thing) any attribute in mongoDB
+router.patch('/:postId', getPost, async (req,res) =>{    
+    if(req.body.Name != null && req.body.Place != null && req.body.Ip != null && req.body.Description != null && req.body.State != null){
+        res.post.Name = req.body.Name;
+        res.post.Place = req.body.Place;
+        res.post.Ip = req.body.Ip;
+        res.post.Description = req.body.Description;
+        res.post.State = req.body.State;
+        postReqToDev(res.post.Ip, req.body.State);
+    } else if(req.body.State != null) { 
+        res.post.State = req.body.State; //Axios=JavaScript library use to perform HTTP requests to postId device.                  		
+        postReqToDev(res.post.Ip, req.body.State);
+    }         
+    else {  //404 means request not found
+        return res.status(404).json({ 
+            message : 'Cannot Find Argument(s) of Device'
+        }); 
+    }
+    try {
+        const updatedpost = await res.post.save()
+        res.json(updatedpost);
+    } catch (err) {
+        res.status(400).json({ message : err.message });        
+    }
 });
+
 
 // 5) Deleting One specific _id from mongoDB
 router.delete('/:postId', getPost, async (req,res) =>{
